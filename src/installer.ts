@@ -19,8 +19,7 @@ async function download(version: string): Promise<string> {
   core.debug(`Extracting: ${archivePath}`);
   const extractedPath = await tc.extractZip(archivePath);
   core.debug(`Extracted: ${extractedPath}\n${fs.readdirSync(extractedPath)}`);
-  const toolPath = path.join(extractedPath, getArchiveName(version));
-  const cachePath = await tc.cacheDir(toolPath, "protobuf", version);
+  const cachePath = await tc.cacheDir(extractedPath, "protoc", version);
   core.debug(`goxz is cached under ${cachePath}`);
   return cachePath;
 }

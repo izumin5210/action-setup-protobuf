@@ -26,7 +26,7 @@ async function download(version: string): Promise<string> {
 }
 
 function getUrl(version: string): string {
-  return `https://github.com/protocolbuffers/protobuf/releases/download/v${version}/${getArchiveName(version)}.zip`;
+  return `https://github.com/protocolbuffers/protobuf/releases/download/${version}/${getArchiveName(version)}.zip`;
 }
 
 function getArchiveName(version: string): string {

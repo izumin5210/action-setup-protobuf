@@ -13,8 +13,12 @@ export async function installProtobuf(version: string): Promise<void> {
 }
 
 async function download(version: string): Promise<string> {
+  const url = getUrl(version);
+  core.debug(`Downloading: ${url}`);
   const archivePath = await tc.downloadTool(getUrl(version));
+  core.debug(`Extracting: ${archivePath}`);
   const extractedPath = await tc.extractZip(archivePath);
+  core.debug(`Extracted: ${extractedPath}\n${fs.readdirSync(extractedPath)}`);
   const toolPath = path.join(extractedPath, getArchiveName(version));
   const cachePath = await tc.cacheDir(toolPath, "protobuf", version);
   core.debug(`goxz is cached under ${cachePath}`);

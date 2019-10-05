@@ -26,5 +26,5 @@ function getUrl(version: string): string {
 }
 
 function getArchiveName(version: string): string {
-  return `protoc-${version}-linux-x86_64`;
+  return `protoc-${version.replace(/^v/, '')}-linux-x86_64`;
 }

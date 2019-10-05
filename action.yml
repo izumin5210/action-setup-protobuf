@@ -2,7 +2,7 @@ name: 'setup-protobuf'
 description: 'Provide a description here'
 author: 'izumin5210'
 inputs:
-  maltmill-version:
+  version:
     description: "Version of github.com/protocolbuffers/protobuf"
     default: 'v3.10.0'
 runs:

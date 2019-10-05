@@ -1,10 +1,10 @@
-name: 'Your name here'
+name: 'setup-protobuf'
 description: 'Provide a description here'
-author: 'Your name or organization here'
+author: 'izumin5210'
 inputs:
-  myInput:              # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+  maltmill-version:
+    description: "Version of github.com/protocolbuffers/protobuf"
+    default: 'v3.10.0'
 runs:
   using: 'node12'
   main: 'lib/main.js'

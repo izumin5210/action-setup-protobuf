@@ -1,16 +1,9 @@
 import * as core from '@actions/core';
-import {wait} from './wait'
+import { installProtobuf } from './installer'
 
 async function run() {
   try {
-    const ms = core.getInput('milliseconds');
-    console.log(`Waiting ${ms} milliseconds ...`)
-
-    core.debug((new Date()).toTimeString())
-    await wait(parseInt(ms));
-    core.debug((new Date()).toTimeString())
-
-    core.setOutput('time', new Date().toTimeString());
+    await installProtobuf(core.getInput("version"));
   } catch (error) {
     core.setFailed(error.message);
   }

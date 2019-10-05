@@ -1,4 +1,5 @@
 import * as core from '@actions/core';
+import * as exec from '@actions/exec';
 import * as tc from '@actions/tool-cache';
 import * as io from '@actions/io';
 import * as fs from 'fs';
@@ -10,6 +11,8 @@ export async function installProtobuf(version: string): Promise<void> {
   const dest = path.join('/usr', 'local');
   io.cp(path.join(toolPath, 'bin', '*'), path.join(dest, 'bin'));
   io.cp(path.join(toolPath, 'include', '*'), path.join(dest, 'include'));
+
+  await exec.exec('protoc', ['--version']);
 }
 
 async function download(version: string): Promise<string> {

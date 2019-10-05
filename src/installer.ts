@@ -9,8 +9,8 @@ export async function installProtobuf(version: string): Promise<void> {
   const toolPath = tc.find('protobuf', version) || await download(version);
   core.debug(`contained entries: ${fs.readdirSync(toolPath)}`);
   const dest = path.join('/usr', 'local');
-  io.cp(path.join(toolPath, 'bin', '*'), path.join(dest, 'bin'));
-  io.cp(path.join(toolPath, 'include', '*'), path.join(dest, 'include'));
+  io.cp(path.join(toolPath, 'bin'), path.join(dest, 'bin'));
+  io.cp(path.join(toolPath, 'include'), path.join(dest, 'include'));
 
   await exec.exec('protoc', ['--version']);
 }
